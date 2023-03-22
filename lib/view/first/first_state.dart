@@ -1,31 +1,31 @@
 import 'package:bloc_cubit_example/core/base/base_state.dart';
-import 'package:bloc_cubit_example/example/example_response.dart';
+import 'package:bloc_cubit_example/product/model/first_response.dart';
 
 enum ServiceState { loading, success, error }
 
-class ExampleState extends BaseState {
+class FirstState extends BaseState {
   final int number;
-  final List<ExampleResponseModel> model;
+  final List<FirstResponseModel> model;
   final ServiceState serviceState;
   final String name;
 
-  ExampleState({
+  FirstState({
     required this.number,
     required this.model,
     this.serviceState = ServiceState.loading,
-    this.name = '',
+    this.name = 'Muhammet',
   });
 
   @override
   List<Object?> get props => [number, model, serviceState, name];
 
-  ExampleState copyWith({
+  FirstState copyWith({
     int? number,
-    List<ExampleResponseModel>? model,
+    List<FirstResponseModel>? model,
     ServiceState? serviceState,
     String? name,
   }) {
-    return ExampleState(
+    return FirstState(
       number: number ?? this.number,
       model: model ?? this.model,
       serviceState: serviceState ?? this.serviceState,

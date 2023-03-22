@@ -1,6 +1,6 @@
 import 'package:bloc_cubit_example/core/base/base_stateful_view.dart';
-import 'package:bloc_cubit_example/example/example_state.dart';
-import 'package:bloc_cubit_example/example/example_view_model.dart';
+import 'package:bloc_cubit_example/view/first/first_state.dart';
+import 'package:bloc_cubit_example/view/first/first_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,24 +16,22 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // build call: state => 1
 // build call: read by state => 0
 
-class ExampleView extends StatefulWidget {
-  const ExampleView({Key? key}) : super(key: key);
+class FirstView extends StatefulWidget {
+  const FirstView({Key? key}) : super(key: key);
 
   @override
-  State<ExampleView> createState() => _ExampleViewState();
+  State<FirstView> createState() => _FirstViewState();
 }
 
-class _ExampleViewState extends BaseStatefulView<ExampleView, ExampleViewModel> {
-  _ExampleViewState() : super(viewModel: ExampleViewModel());
+class _FirstViewState extends BaseStatefulView<FirstView, FirstViewModel> {
+  _FirstViewState() : super(viewModel: FirstViewModel());
 
   @override
   Widget build(BuildContext context) {
-    print('builder-trigger');
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () => reader.get()),
-      appBar: AppBar(title: const Text('Example App')),
-      body: BlocBuilder<ExampleViewModel, ExampleState>(builder: (context, state) {
-        print('bloc builder trigger');
+      floatingActionButton: FloatingActionButton(onPressed: () => reader.navigate()),
+      appBar: AppBar(title: const Text('First Screem')),
+      body: BlocBuilder<FirstViewModel, FirstState>(builder: (context, state) {
         return state.serviceState != ServiceState.success
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(

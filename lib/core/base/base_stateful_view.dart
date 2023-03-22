@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewModel> extends State<W> {
   @mustCallSuper
   final VM viewModel;
+  dynamic _args;
 
   BaseStatefulView({required this.viewModel});
 
@@ -14,6 +15,10 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
 
   /// Called when this object is inserted into the tree
   void initState() {
+    _args = this.setArgs();
+    if (_args != null) {
+      reader.setArgs({'args': _args});
+    }
     super.initState();
     reader.onInit();
   }
@@ -23,7 +28,7 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
   /// Called when this object is removed from the tree permanently.
   void dispose() {
     super.dispose();
-    reader.onClose();
+    viewModel.onClose();
   }
 
   @override
@@ -34,6 +39,8 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
     reader.didUpdateWidget(oldWidget);
   }
 
+  dynamic setArgs() {}
+
   /// [reader] provides an instance that type of VM
   VM get reader => context.read<VM>();
 
@@ -42,5 +49,5 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
   /// [watcher] has a cost. When you call [watcher] with context of build method,
   /// [watcher] will rebuild three times your [build] widget.
   /// Should not be used unless necessary
-  VM watcher(context) => context.watch<VM>().state;
+  VM watcher(BuildContext context) => context.watch<VM>();
 }

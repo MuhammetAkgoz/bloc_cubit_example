@@ -1,12 +1,12 @@
-class ExampleResponseModel {
+class FirstResponseModel {
   int? userId;
   int? id;
   String? title;
   String? body;
 
-  ExampleResponseModel({this.userId, this.id, this.title, this.body});
+  FirstResponseModel({this.userId, this.id, this.title, this.body});
 
-  ExampleResponseModel.fromJson(Map<String, dynamic> json) {
+  FirstResponseModel.fromJson(Map<String, dynamic> json) {
     userId = json['userId'];
     id = json['id'];
     title = json['title'];
