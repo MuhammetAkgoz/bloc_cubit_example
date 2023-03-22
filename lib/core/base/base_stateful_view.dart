@@ -7,39 +7,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewModel> extends State<W> {
   @mustCallSuper
   final VM viewModel;
-  dynamic _args;
 
   BaseStatefulView({required this.viewModel});
 
   @override
-
-  /// Called when this object is inserted into the tree
   void initState() {
-    _args = this.setArgs();
-    if (_args != null) {
-      reader.setArgs({'args': _args});
-    }
+    /// Called when this object is inserted into the tree
     super.initState();
+
+    /// Transport currently widget context to BaseViewModel
+    reader.setBuildContext(context);
     reader.onInit();
   }
 
   @override
-
-  /// Called when this object is removed from the tree permanently.
   void dispose() {
-    super.dispose();
+    /// Called when this object is removed from the tree permanently.
     viewModel.onClose();
+    super.dispose();
   }
-
-  @override
-
-  /// Called whenever the widget configuration changes.
-  void didUpdateWidget(W oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    reader.didUpdateWidget(oldWidget);
-  }
-
-  dynamic setArgs() {}
 
   /// [reader] provides an instance that type of VM
   VM get reader => context.read<VM>();

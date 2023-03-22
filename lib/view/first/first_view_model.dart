@@ -4,8 +4,7 @@ import 'dart:io';
 import 'package:bloc_cubit_example/core/base/base_view_model.dart';
 import 'package:bloc_cubit_example/product/model/first_response.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
-import 'package:bloc_cubit_example/view/first/first_state.dart';
-import 'package:flutter/material.dart';
+import 'package:bloc_cubit_example/view/first/first_view_state.dart';
 import 'package:http/http.dart' as http;
 
 class FirstViewModel extends BaseViewModel<FirstState> {
@@ -17,12 +16,6 @@ class FirstViewModel extends BaseViewModel<FirstState> {
   void onInit() {
     super.onInit();
     get();
-  }
-
-  @override
-  void didUpdateWidget(StatefulWidget oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    print('updated');
   }
 
   Future<void> get() async {
@@ -39,5 +32,5 @@ class FirstViewModel extends BaseViewModel<FirstState> {
     throw Exception('fetch error');
   }
 
-  void navigate() => navigator.navigateToPage(path: Routes.second, data: {'a': 'b'});
+  void navigate() => navigator.navigateToPage(path: Routes.second);
 }

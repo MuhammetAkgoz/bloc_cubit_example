@@ -26,9 +26,4 @@ class _SecondViewState extends BaseStatefulView<SecondView, SecondViewModel> {
           ),
         ));
   }
-
-  @override
-  setArgs() {
-    return {'a': 'b', 'c': 'd', 'e': 'f'};
-  }
 }

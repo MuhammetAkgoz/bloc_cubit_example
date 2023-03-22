@@ -6,24 +6,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// [BaseViewModel] a base of all view model classes
 class BaseViewModel<T extends BaseState> extends Cubit<T> {
   late final NavigationHandler navigator;
-  Map<String, dynamic>? _args;
+  BuildContext? _context;
 
   BaseViewModel(super.initialState) {
     navigator = NavigationHandler.instance;
   }
 
-  /// [onInit] does not run any [StatefulWidget]
-  void onInit() {}
-
-  /// [onClose] does not run any [StatefulWidget]
-  void onClose() {}
-
-  /// [didUpdateWidget] does not run any [StatefulWidget]
-  void didUpdateWidget(StatefulWidget oldWidget) {}
-
-  void setArgs(Map<String, dynamic>? data) {
-    _args = data;
+  /// [onInit] does not run any [StatelessWidget]
+  void onInit() {
+    print('${runtimeType.toString()} created');
   }
 
-  dynamic get arg => _args?['args'];
+  /// [onClose] does not run any [StatelessWidget]
+  void onClose() {
+    print('${runtimeType.toString()} closed');
+  }
+
+  void setBuildContext(BuildContext context) {
+    print("${runtimeType.toString()} has ${context.widget}'s context");
+    _context = context;
+  }
+
+  /// [context] not be null cause used before on closed
+  BuildContext get context {
+    if (_context == null) throw Exception("${context.widget}'s context is null");
+    return _context!;
+  }
 }
