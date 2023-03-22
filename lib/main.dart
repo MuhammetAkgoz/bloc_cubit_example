@@ -1,5 +1,7 @@
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_handler.dart';
+import 'package:bloc_cubit_example/product/theme/app_theme.dart';
+import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
 import 'package:bloc_cubit_example/view/first/first_view_model.dart';
 import 'package:bloc_cubit_example/view/second/second_view_model.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,10 @@ void main() {
   runApp(
     MultiBlocProvider(
       providers: [
+        /// Theme Provider
+        BlocProvider<ThemeProvider>(create: (context) => ThemeProvider()),
+
+        /// View Providers
         BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
         BlocProvider<SecondViewModel>(create: (context) => SecondViewModel()),
       ],
@@ -24,10 +30,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      useInheritedMediaQuery: true,
       title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
       navigatorKey: NavigationHandler.instance.navigatorKey,
-      onGenerateRoute: (routeSettings) => NavigationGenerator.onGenerateRoute(routeSettings),
+      onGenerateRoute: NavigationGenerator.onGenerateRoute,
+      theme: AppThemeBuilder.createTheme(LightAppTheme()),
+      darkTheme: AppThemeBuilder.createTheme(DarkAppTheme()),
+      themeMode: context.watch<ThemeProvider>().state.themeMode,
     );
   }
 }
