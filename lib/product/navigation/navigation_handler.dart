@@ -29,5 +29,5 @@ class NavigationHandler implements INavigationService {
   }
 
   @override
-  void pop() async => navigatorKey.currentState!.pop();
+  void pop() => navigatorKey.currentState!.pop();
 }

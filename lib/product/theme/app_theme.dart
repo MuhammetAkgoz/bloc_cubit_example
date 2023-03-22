@@ -1,20 +1,20 @@
-import 'package:bloc_cubit_example/product/theme/color/IColorTheme.dart';
+import 'package:bloc_cubit_example/product/theme/color/base_color_theme.dart';
 import 'package:bloc_cubit_example/product/theme/color/dark_color.dart';
 import 'package:bloc_cubit_example/product/theme/color/light_color.dart';
 import 'package:flutter/material.dart';
 
 abstract class IAppTheme {
-  IColorTheme get colorTheme;
+  BaseColorTheme get colorTheme;
 }
 
 class LightAppTheme extends IAppTheme {
   @override
-  IColorTheme get colorTheme => LightColor();
+  BaseColorTheme get colorTheme => LightColor();
 }
 
 class DarkAppTheme extends IAppTheme {
   @override
-  IColorTheme get colorTheme => DarkColor();
+  BaseColorTheme get colorTheme => DarkColor();
 }
 
 abstract class AppThemeBuilder {

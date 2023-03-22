@@ -1,8 +1,8 @@
-import 'package:bloc_cubit_example/product/theme/color/IColorTheme.dart';
 import 'package:bloc_cubit_example/product/theme/color/app_color.dart';
+import 'package:bloc_cubit_example/product/theme/color/base_color_theme.dart';
 import 'package:flutter/material.dart';
 
-class LightColor implements IColorTheme {
+class LightColor implements BaseColorTheme {
 
   LightColor() {
     primaryScaffoldBackground = colors.white;

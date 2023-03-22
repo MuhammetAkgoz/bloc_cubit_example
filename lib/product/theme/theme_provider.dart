@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeProvider extends Cubit<ThemeState> {
-  ThemeProvider() : super(const ThemeState(themeMode: ThemeMode.system));
+  ThemeProvider() : super(const ThemeState(themeMode: ThemeMode.light));
 
   void change() {
     if (state.themeMode == ThemeMode.light) {

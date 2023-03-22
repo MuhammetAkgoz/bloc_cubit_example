@@ -1,8 +1,15 @@
-import 'package:bloc_cubit_example/product/theme/color/IColorTheme.dart';
 import 'package:bloc_cubit_example/product/theme/color/app_color.dart';
+import 'package:bloc_cubit_example/product/theme/color/base_color_theme.dart';
 import 'package:flutter/material.dart';
 
-class DarkColor implements IColorTheme {
+class DarkColor implements BaseColorTheme {
+  DarkColor() {
+    colorScheme = const ColorScheme.light().copyWith(onPrimary: colors.lima, onSurface: colors.outerSpace);
+    successColor = colors.sunGlow;
+    warningColor = colors.lima;
+    infoColor = colors.carnation;
+    errorColor = colors.azureRadiance;
+  }
   @override
   late final Brightness? brightness;
 
@@ -80,12 +87,4 @@ class DarkColor implements IColorTheme {
 
   @override
   final AppColors colors = AppColors();
-
-  DarkColor() {
-    colorScheme = const ColorScheme.light().copyWith(onPrimary: colors.lima, onSurface: colors.outerSpace);
-    successColor = colors.sunGlow;
-    warningColor = colors.lima;
-    infoColor = colors.carnation;
-    errorColor = colors.azureRadiance;
-  }
 }

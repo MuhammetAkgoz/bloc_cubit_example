@@ -12,7 +12,7 @@ void main() {
     MultiBlocProvider(
       providers: [
         /// Theme Provider
-        BlocProvider<ThemeProvider>(create: (context) => ThemeProvider()),
+        BlocProvider<ThemeProvider>(lazy: false, create: (context) => ThemeProvider()),
 
         /// View Providers
         BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),

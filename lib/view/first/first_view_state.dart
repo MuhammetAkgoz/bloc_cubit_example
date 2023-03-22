@@ -4,17 +4,17 @@ import 'package:bloc_cubit_example/product/model/first_response.dart';
 enum ServiceState { loading, success, error }
 
 class FirstState extends BaseState {
-  final int number;
-  final List<FirstResponseModel> model;
-  final ServiceState serviceState;
-  final String name;
-
   FirstState({
     required this.number,
     required this.model,
     this.serviceState = ServiceState.loading,
     this.name = 'Muhammet',
   });
+
+  final int number;
+  final List<FirstResponseModel> model;
+  final ServiceState serviceState;
+  final String name;
 
   @override
   List<Object?> get props => [number, model, serviceState, name];

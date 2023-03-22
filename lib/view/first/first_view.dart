@@ -17,7 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // build call: read by state => 0
 
 class FirstView extends StatefulWidget {
-  const FirstView({Key? key}) : super(key: key);
+  const FirstView({super.key});
 
   @override
   State<FirstView> createState() => _FirstViewState();
