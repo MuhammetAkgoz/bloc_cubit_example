@@ -1,17 +1,23 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:bloc_cubit_example/core/base/base_view_model.dart';
 import 'package:bloc_cubit_example/example/example_response.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bloc_cubit_example/example/example_state.dart';
 import 'package:http/http.dart' as http;
 
-class ExampleViewModel extends Cubit<ExampleState> {
-  ExampleViewModel() : super(const ExampleState(number: 5, model: []));
+class ExampleViewModel extends BaseViewModel<ExampleState> {
+  ExampleViewModel() : super(ExampleState(number: 5, model: []));
 
   final String baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
+  @override
+  void onInit() {
+    get();
+  }
+
   Future<void> get() async {
+    emit(state.copyWith(serviceState: ServiceState.loading));
     final response = await http.get(Uri.parse(baseUrl));
 
     if (response.statusCode == HttpStatus.ok) {
@@ -23,34 +29,5 @@ class ExampleViewModel extends Cubit<ExampleState> {
       ));
     }
     throw Exception('fetch error');
-  }
-}
-
-enum ServiceState { loading, success, error }
-
-class ExampleState extends Equatable {
-  final int number;
-  final List<ExampleResponseModel> model;
-  final ServiceState serviceState;
-
-  const ExampleState({
-    required this.number,
-    required this.model,
-    this.serviceState = ServiceState.loading,
-  });
-
-  @override
-  List<Object?> get props => [number, model, serviceState];
-
-  ExampleState copyWith({
-    int? number,
-    List<ExampleResponseModel>? model,
-    ServiceState? serviceState,
-  }) {
-    return ExampleState(
-      number: number ?? this.number,
-      model: model ?? this.model,
-      serviceState: serviceState ?? this.serviceState,
-    );
   }
 }
