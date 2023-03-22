@@ -6,10 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(MultiBlocProvider(providers: [
-    BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
-    BlocProvider<SecondViewModel>(create: (context) => SecondViewModel()),
-  ], child: const MyApp()));
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
+        BlocProvider<SecondViewModel>(create: (context) => SecondViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

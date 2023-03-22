@@ -5,10 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 /// [BaseStatefulView] a base of all [StatefulWidget] classes.
 /// [BaseStatefulView] has a standard life-cycle methods such as [initState],[dispose],[didUpdateWidget]
 abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewModel> extends State<W> {
+  /// [BaseStatefulView] is a constructor method.
+  /// Method requires a [viewModel]
+  BaseStatefulView({required this.viewModel});
+
+  /// [viewModel] is required to use its method
+  /// such as onInit, setBuildContext, onClose.
   @mustCallSuper
   final VM viewModel;
-
-  BaseStatefulView({required this.viewModel});
 
   @override
   void initState() {
@@ -16,8 +20,9 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
     super.initState();
 
     /// Transport currently widget context to BaseViewModel
-    reader.setBuildContext(context);
-    reader.onInit();
+    reader
+      ..context = super.context
+      ..onInit();
   }
 
   @override

@@ -22,7 +22,7 @@ class NavigationGenerator {
     }
   }
 
-  static MaterialPageRoute _navigate(Widget widget, String pageName) {
+  static MaterialPageRoute<Widget> _navigate(Widget widget, String pageName) {
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: RouteSettings(name: pageName),

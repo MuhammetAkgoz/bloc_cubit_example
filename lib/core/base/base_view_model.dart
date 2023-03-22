@@ -5,26 +5,23 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// [BaseViewModel] a base of all view model classes
 class BaseViewModel<T extends BaseState> extends Cubit<T> {
-  late final NavigationHandler navigator;
-  BuildContext? _context;
-
+  /// [BaseViewModel] is a constructor method
   BaseViewModel(super.initialState) {
     navigator = NavigationHandler.instance;
   }
 
+  /// [navigator] enables you to manage routes
+  late final NavigationHandler navigator;
+  BuildContext? _context;
+
   /// [onInit] does not run any [StatelessWidget]
   void onInit() {
-    print('${runtimeType.toString()} created');
+    print('${toString()}: CREATED');
   }
 
   /// [onClose] does not run any [StatelessWidget]
   void onClose() {
-    print('${runtimeType.toString()} closed');
-  }
-
-  void setBuildContext(BuildContext context) {
-    print("${runtimeType.toString()} has ${context.widget}'s context");
-    _context = context;
+    print('${toString()}: CLOSED');
   }
 
   /// [context] not be null cause used before on closed
@@ -32,4 +29,6 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
     if (_context == null) throw Exception("${context.widget}'s context is null");
     return _context!;
   }
+
+  set context(BuildContext value) => _context = value;
 }

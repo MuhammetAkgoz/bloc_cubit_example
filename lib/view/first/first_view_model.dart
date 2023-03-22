@@ -23,9 +23,9 @@ class FirstViewModel extends BaseViewModel<FirstState> {
     final response = await http.get(Uri.parse(baseUrl));
 
     if (response.statusCode == HttpStatus.ok) {
-      List<dynamic> body = jsonDecode(response.body);
+      final body = jsonDecode(response.body) as List<dynamic>;
       return emit(state.copyWith(
-        model: body.map((dynamic item) => FirstResponseModel.fromJson(item)).toList(),
+        model: body.map(FirstResponseModel.fromJson).toList(),
         serviceState: ServiceState.success,
       ));
     }

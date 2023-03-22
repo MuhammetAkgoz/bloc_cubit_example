@@ -1,24 +1,23 @@
 class FirstResponseModel {
+  FirstResponseModel({this.userId, this.id, this.title, this.body});
+
+  FirstResponseModel.fromJson(dynamic json) {
+    userId = json['userId'] as int;
+    id = json['id'] as int;
+    title = json['title'] as String;
+    body = json['body'] as String;
+  }
   int? userId;
   int? id;
   String? title;
   String? body;
 
-  FirstResponseModel({this.userId, this.id, this.title, this.body});
-
-  FirstResponseModel.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
-    id = json['id'];
-    title = json['title'];
-    body = json['body'];
-  }
-
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userId'] = this.userId;
-    data['id'] = this.id;
-    data['title'] = this.title;
-    data['body'] = this.body;
+    final data = <String, dynamic>{};
+    data['userId'] = userId;
+    data['id'] = id;
+    data['title'] = title;
+    data['body'] = body;
     return data;
   }
 }
