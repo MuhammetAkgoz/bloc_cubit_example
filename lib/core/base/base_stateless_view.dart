@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 /// [BaseStatelessView] a base of all [StatelessWidget] classes
 abstract class BaseStatelessView extends StatelessWidget {
