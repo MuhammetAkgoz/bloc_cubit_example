@@ -8,8 +8,8 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   SecondViewModel() : super(SecondState(args: ''));
 
   @override
-  void onInit() {
-    super.onInit();
+  void onReady() {
+    super.onReady();
 
     /// Pick args on tree
     final args = BlocProvider.of<FirstViewModel>(context).state.name;

@@ -20,9 +20,18 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
     super.initState();
 
     /// Transport currently widget context to BaseViewModel
+    reader.onInit();
+  }
+
+  @override
+  void didChangeDependencies() {
+    /// Called when a dependency of this State object changes.
+    /// This method is also called immediately after initState. It is safe to call
+    /// BuildContext.dependOnInheritedWidgetOfExactType from this method.
+    super.didChangeDependencies();
     reader
       ..context = super.context
-      ..onInit();
+      ..onReady();
   }
 
   @override
