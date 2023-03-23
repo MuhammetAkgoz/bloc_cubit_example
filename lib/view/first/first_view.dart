@@ -4,18 +4,6 @@ import 'package:bloc_cubit_example/view/first/first_view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-/// Own
-// build call:watcher => 3
-// build call: watcher with read => 2
-// build call: state => 1
-// build call: read by state => 0
-
-/// Doc
-// build call:watcher => 1
-// build call: watcher with read => 0
-// build call: state => 1
-// build call: read by state => 0
-
 class FirstView extends StatefulWidget {
   const FirstView({super.key});
 

@@ -1,5 +1,6 @@
 import 'package:bloc_cubit_example/view/first/first_view.dart';
 import 'package:bloc_cubit_example/view/second/second_view.dart';
+import 'package:bloc_cubit_example/view/third/third_view.dart';
 import 'package:flutter/material.dart';
 
 @immutable
@@ -8,6 +9,7 @@ class Routes {
 
   static const String first = '/';
   static const String second = '/second';
+  static const String third = '/third';
 }
 
 class NavigationGenerator {
@@ -16,7 +18,9 @@ class NavigationGenerator {
       case Routes.first:
         return _navigate(const FirstView(), Routes.first);
       case Routes.second:
-        return _navigate(const SecondView(), Routes.second);
+        return _navigate(const SecondViewWrapper(), Routes.second);
+      case Routes.third:
+        return _navigate(ThirdView(), Routes.second);
       default:
         return undefinedRoute();
     }

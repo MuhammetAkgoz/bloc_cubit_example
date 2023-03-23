@@ -4,6 +4,18 @@ import 'package:bloc_cubit_example/view/second/second_view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+class SecondViewWrapper extends StatelessWidget {
+  const SecondViewWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider<SecondViewModel>(
+      create: (_) => SecondViewModel(),
+      child: const SecondView(),
+    );
+  }
+}
+
 class SecondView extends StatefulWidget {
   const SecondView({super.key});
 
@@ -16,6 +28,7 @@ class _SecondViewState extends BaseStatefulView<SecondView, SecondViewModel> {
 
   @override
   Widget build(BuildContext context) {
+    print('second trigger');
     return Scaffold(appBar: AppBar(title: const Text('Second Screen')), body: buildTheme());
   }
 
@@ -30,13 +43,15 @@ class _SecondViewState extends BaseStatefulView<SecondView, SecondViewModel> {
   }
 
   Widget buildTheme() {
-    return Center(
-      child: GestureDetector(
-        onTap: () => reader.changeTheme(),
-        child: Container(
-          height: 100,
-          width: 180,
-          color: Colors.blue,
+    return BlocBuilder<SecondViewModel, SecondState>(
+      builder: (context, state) => Center(
+        child: GestureDetector(
+          onTap: () => reader.navigate(),
+          child: Container(
+            height: 100,
+            width: 180,
+            color: state.color,
+          ),
         ),
       ),
     );

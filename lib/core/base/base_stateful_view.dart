@@ -35,7 +35,7 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     /// Called when this object is removed from the tree permanently.
     viewModel.onClose();
     super.dispose();
