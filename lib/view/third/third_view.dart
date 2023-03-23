@@ -10,27 +10,19 @@ class ThirdView extends BaseStatelessView<ThirdViewModel> {
   @override
   Widget build(BuildContext context) {
     print('third trigger');
-    return BlocProvider(
-      create: (_) => ThirdViewModel(),
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-              floatingActionButton: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                      heroTag: 'tag1', onPressed: () => reader(context).increment(), child: const Icon(Icons.add)),
-                  const SizedBox(height: 20),
-                  FloatingActionButton(
-                      heroTag: 'tag2', onPressed: () => reader(context).decrement(), child: const Icon(Icons.remove)),
-                ],
-              ),
-              appBar: AppBar(title: const Text('Third Screen')),
-              body: BlocBuilder<ThirdViewModel, ThirdState>(
-                builder: (context, state) => Center(child: Text(state.number.toString())),
-              ));
-        },
-      ),
-    );
+
+    return Scaffold(
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(heroTag: 'tag1', onPressed: () => reader(context).increment(), child: const Icon(Icons.add)),
+            const SizedBox(height: 20),
+            FloatingActionButton(heroTag: 'tag2', onPressed: () => reader(context).decrement(), child: const Icon(Icons.remove)),
+          ],
+        ),
+        appBar: AppBar(title: const Text('Third Screen')),
+        body: BlocBuilder<ThirdViewModel, ThirdState>(
+          builder: (context, state) => Center(child: Text(state.number.toString())),
+        ));
   }
 }
