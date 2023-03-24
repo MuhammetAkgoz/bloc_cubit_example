@@ -20,11 +20,8 @@ class _SecondViewState extends BaseStatefulView<SecondView, SecondViewModel> {
     return Scaffold(
       appBar: AppBar(title: const Text('Posts')),
       body: ViewStateBuilder<SecondState, SecondViewModel>(
-        onLoading: (context) => Text('onLoading'),
-        onSuccess: (context, state) => Text(state.screenStatus.name),
-        onRefreshing: (context, state) => Text('onRefreshing'),
-        onEmpty: (context) => Text('onEmpty'),
-        onError: (context, error) => Text('onError'),
+        onLoading: (context) => const Center(child: CircularProgressIndicator()),
+        onSuccess: (context, state) => Text(state.color.toString()),
       ),
     );
   }

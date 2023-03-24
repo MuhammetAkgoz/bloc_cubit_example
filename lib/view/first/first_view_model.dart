@@ -40,5 +40,5 @@ class FirstViewModel extends BaseViewModel<FirstState> {
     throw Exception('fetch error');
   }
 
-  void navigate() => navigator.navigateToPageClear(path: Routes.second);
+  void navigate() => navigator.navigateToPage(path: Routes.second);
 }

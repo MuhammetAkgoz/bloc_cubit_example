@@ -1,4 +1,5 @@
 import 'package:bloc_cubit_example/core/base/base_state.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,24 +50,22 @@ typedef ViewStateBuilderCondition = bool Function(
 /// [B] - the type of bloc.
 class ViewStateBuilder<T extends BaseState, B extends BlocBase<T>> extends BlocBuilder<B, T> {
   ViewStateBuilder({
-    Key? key,
-    B? bloc,
+    super.key,
+    super.bloc,
     InitialBuilder? onReady,
     LoadingBuilder? onLoading,
     RefreshingBuilder<T>? onRefreshing,
     SuccessBuilder<T>? onSuccess,
     EmptyBuilder? onEmpty,
     ErrorBuilder? onError,
-    ViewStateBuilderCondition? buildWhen,
+    ViewStateBuilderCondition? super.buildWhen,
   }) : super(
-          key: key,
-          bloc: bloc,
-          buildWhen: buildWhen,
           builder: (BuildContext context, T state) {
+            print('${state.screenStatus.name} çalıştı');
             if (state.screenStatus == ScreenStatus.initial) {
-              return onReady?.call(context) ?? const SizedBox.shrink();
+              return onReady?.call(context) ?? const Center(child: CircularProgressIndicator());
             } else if (state.screenStatus == ScreenStatus.loading) {
-              return onLoading?.call(context) ?? const SizedBox.shrink();
+              return onLoading?.call(context) ?? const Center(child: CircularProgressIndicator());
             } else if (state.screenStatus == ScreenStatus.refreshing) {
               return onRefreshing?.call(context, state) ?? const SizedBox.shrink();
             } else if (state.screenStatus == ScreenStatus.success) {

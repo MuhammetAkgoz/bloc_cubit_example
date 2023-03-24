@@ -1,3 +1,4 @@
+import 'package:bloc_cubit_example/core/base/base_state.dart';
 import 'package:bloc_cubit_example/core/base/base_view_model.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
@@ -6,13 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SecondViewModel extends BaseViewModel<SecondState> {
-  SecondViewModel() : super(SecondState(args: '', color: Colors.yellow));
+  SecondViewModel() : super(const SecondState(args: '', color: Colors.yellow));
 
   @override
-  void onReady() {
-    /// Pick args on tree
-    // final args = ModelRoute
-    // emit(state.copyWith(args: args));
+  void onReady() async {
+    emit(state.copyWith(screenStatus: ScreenStatus.loading));
+    await Future.delayed(Duration(seconds: 5));
+    emit(state.copyWith(screenStatus: ScreenStatus.success));
   }
 
   void changeTheme() => BlocProvider.of<ThemeProvider>(context).change();

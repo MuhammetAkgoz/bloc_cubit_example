@@ -11,13 +11,17 @@ class SecondState extends BaseState {
   final Color color;
 
   @override
-  List<Object?> get props => [args, color];
+  List<Object?> get props => [...super.props, args, color];
 
   SecondState copyWith({
     String? args,
     Color? color,
     ScreenStatus? screenStatus,
   }) {
-    return SecondState(args: args ?? this.args, color: color ?? this.color, screenStatus: screenStatus ?? super.screenStatus);
+    return SecondState(
+      args: args ?? this.args,
+      color: color ?? this.color,
+      screenStatus: screenStatus ?? super.screenStatus,
+    );
   }
 }

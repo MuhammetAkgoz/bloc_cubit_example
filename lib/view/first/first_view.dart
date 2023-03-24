@@ -21,7 +21,6 @@ class _FirstViewState extends BaseStatefulView<FirstView, FirstViewModel> {
       floatingActionButton: FloatingActionButton(onPressed: () => reader.navigate()),
       appBar: AppBar(title: const Text('First Screem')),
       body: ViewStateBuilder<FirstState, FirstViewModel>(
-        onLoading: (context) => const Center(child: CircularProgressIndicator()),
         onSuccess: (context, state) => ListView.builder(
           itemCount: state.model.length,
           itemBuilder: (context, index) => ListTile(
@@ -29,9 +28,6 @@ class _FirstViewState extends BaseStatefulView<FirstView, FirstViewModel> {
             subtitle: Text(state.model[index].body ?? ''),
           ),
         ),
-        onRefreshing: (context, state) => Text('onRefreshing'),
-        onEmpty: (context) => Text('onEmpty'),
-        onError: (context, error) => Text('onError'),
       ),
     );
   }
