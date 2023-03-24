@@ -22,11 +22,17 @@ class NavigationGenerator {
         return _navigate(const FirstView());
       case Routes.second:
         return _navigate(
-          BlocProvider<SecondViewModel>(create: (_) => SecondViewModel(), child: const SecondView()),
+          BlocProvider<SecondViewModel>(
+            create: (_) => SecondViewModel(),
+            child: const SecondView(),
+          ),
         );
       case Routes.third:
         return _navigate(
-          BlocProvider<ThirdViewModel>(create: (_) => ThirdViewModel(), child: ThirdView()),
+          BlocProvider<ThirdViewModel>(
+            create: (_) => ThirdViewModel(),
+            child: const ThirdView(),
+          ),
         );
       default:
         return undefinedRoute();

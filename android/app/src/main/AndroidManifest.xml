@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.bloc_cubit_example">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
         android:label="bloc_cubit_example"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

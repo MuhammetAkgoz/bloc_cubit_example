@@ -14,6 +14,7 @@ void main() {
         BlocProvider<ThemeProvider>(lazy: false, create: (context) => ThemeProvider()),
 
         /// Page Provider
+        //BlocProvider<LayoutProvider>(create: (context) => LayoutProvider()),
         BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
       ],
       child: const MyApp(),
@@ -24,7 +25,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

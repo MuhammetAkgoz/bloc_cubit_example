@@ -28,14 +28,14 @@ abstract class BaseStatefulView<W extends StatefulWidget, VM extends BaseViewMod
     /// Called when a dependency of this State object changes.
     /// This method is also called immediately after initState. It is safe to call
     /// BuildContext.dependOnInheritedWidgetOfExactType from this method.
-    super.didChangeDependencies();
+    //super.didChangeDependencies();
     reader
       ..context = super.context
       ..onReady();
   }
 
   @override
-  void dispose() async {
+  void dispose() {
     /// Called when this object is removed from the tree permanently.
     viewModel.onClose();
     super.dispose();

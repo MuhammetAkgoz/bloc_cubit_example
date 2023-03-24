@@ -24,13 +24,13 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
   /// [onReady] cannot be run inside a [StatelessWidget]
   /// that has a viewModel.
   void onReady() {
-    print("${_context?.widget}'s context is ready");
+    print("${_context?.owner}'s context is ready");
     print('${toString()}: READY');
   }
 
   /// [onClose] cannot be run inside a [StatelessWidget]
   /// that has a viewModel.
-  void onClose() async {
+  void onClose() {
     print('${toString()}: CLOSED');
   }
 
