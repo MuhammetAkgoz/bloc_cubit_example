@@ -13,4 +13,12 @@ class BaseState extends Equatable {
 
   @override
   List<Object?> get props => [screenStatus];
+
+  BaseState copyWith({
+    ScreenStatus? screenStatus,
+  }) {
+    return BaseState(
+      screenStatus: screenStatus ?? this.screenStatus,
+    );
+  }
 }

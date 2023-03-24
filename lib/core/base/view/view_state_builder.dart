@@ -63,7 +63,7 @@ class ViewStateBuilder<T extends BaseState, B extends BlocBase<T>> extends BlocB
           builder: (BuildContext context, T state) {
             print('${state.screenStatus.name} çalıştı');
             if (state.screenStatus == ScreenStatus.initial) {
-              return onReady?.call(context) ?? const Center(child: CircularProgressIndicator());
+              return onReady?.call(context) ?? const SizedBox.shrink();
             } else if (state.screenStatus == ScreenStatus.loading) {
               return onLoading?.call(context) ?? const Center(child: CircularProgressIndicator());
             } else if (state.screenStatus == ScreenStatus.refreshing) {

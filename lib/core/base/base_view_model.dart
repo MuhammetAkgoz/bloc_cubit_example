@@ -44,5 +44,13 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
 
   /// [context] cannot be set when you called inside of a BaseStatelessView.
   /// it's not throw [Exception]
-  set context(BuildContext value) => _context = value;
+  set context(BuildContext? value) => _context = value;
+
+  void load() => emit(state.copyWith(screenStatus: ScreenStatus.loading) as T);
+  void fail() => emit(state.copyWith(screenStatus: ScreenStatus.error) as T);
+  void init() => emit(state.copyWith(screenStatus: ScreenStatus.initial) as T);
+  void empty() => emit(state.copyWith(screenStatus: ScreenStatus.empty) as T);
+  void ready() {
+    if (context.mounted) emit(state.copyWith(screenStatus: ScreenStatus.success) as T);
+  }
 }
