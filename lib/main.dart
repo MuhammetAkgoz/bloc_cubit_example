@@ -7,18 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(
-    MultiBlocProvider(
-      providers: [
-        /// Theme Provider
-        BlocProvider<ThemeProvider>(lazy: false, create: (context) => ThemeProvider()),
+  runApp(MultiBlocProvider(
+    providers: [
+      /// Theme Provider
+      BlocProvider<ThemeProvider>(lazy: false, create: (context) => ThemeProvider()),
 
-        /// Page Provider
-        BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
-      ],
-      child: const MyApp(),
-    ),
-  );
+      /// Page Provider
+      // BlocProvider<FirstViewModel>(create: (context) => FirstViewModel()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -26,11 +24,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       useInheritedMediaQuery: true,
       title: 'Flutter Demo',
-      navigatorKey: NavigationHandler.instance.navigatorKey,
-      onGenerateRoute: NavigationGenerator.onGenerateRoute,
+      routerConfig: router,
+      //routeInformationProvider: router.routeInformationProvider,
+      //routeInformationParser: router.routeInformationParser,
+      //routerDelegate: router.routerDelegate,
       theme: AppThemeBuilder.createTheme(LightAppTheme()),
       darkTheme: AppThemeBuilder.createTheme(DarkAppTheme()),
       themeMode: context.watch<ThemeProvider>().state.themeMode,

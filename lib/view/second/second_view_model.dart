@@ -5,6 +5,7 @@ import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
 import 'package:bloc_cubit_example/view/second/second_view_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SecondViewModel extends BaseViewModel<SecondState> {
   SecondViewModel() : super(const SecondState(args: '', color: Colors.yellow, title: 'Burak'));
@@ -23,5 +24,5 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   }
 
   void changeTheme() => BlocProvider.of<ThemeProvider>(context).change();
-  void navigate() => navigator.navigateToPage(path: Routes.third);
+  void navigate() => context.pushReplacement(Routes.third);
 }

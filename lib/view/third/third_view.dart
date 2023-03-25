@@ -11,11 +11,10 @@ class ThirdView extends StatefulWidget {
   State<ThirdView> createState() => _ThirdViewState();
 }
 
-class _ThirdViewState extends BaseStatefulView<ThirdView, ThirdViewModel> {
-  _ThirdViewState() : super(viewModel: ThirdViewModel());
-
+class _ThirdViewState extends State<ThirdView> {
   @override
   Widget build(BuildContext context) {
+    print('third trigger');
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[

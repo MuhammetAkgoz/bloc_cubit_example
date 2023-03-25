@@ -6,6 +6,7 @@ import 'package:bloc_cubit_example/core/base/base_view_model.dart';
 import 'package:bloc_cubit_example/product/model/first_response.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/view/first/first_view_state.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 
 class FirstViewModel extends BaseViewModel<FirstState> {
@@ -33,11 +34,10 @@ class FirstViewModel extends BaseViewModel<FirstState> {
       emit(state.copyWith(model: body.map(FirstResponseModel.fromJson).toList()));
 
       emit(state.copyWith(screenStatus: ScreenStatus.success));
-
       return;
     }
     throw Exception('fetch error');
   }
 
-  void navigate() => navigator.navigateToPage(path: Routes.second);
+  // void navigate() => context.pushNamed('Second View');
 }
