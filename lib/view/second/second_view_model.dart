@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SecondViewModel extends BaseViewModel<SecondState> {
   SecondViewModel() : super(const SecondState(args: '', color: Colors.yellow, title: 'Burak'));
+  late final String appTitle;
 
   @override
   void onInit() {
@@ -16,7 +17,9 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   }
 
   @override
-  void onReady() async {
+  void onReady() {
+    super.onReady();
+    appTitle = args! as String;
     // emit(state.copyWith(screenStatus: ScreenStatus.loading));
     //print(args as Map<String, String>);
     // await Future.delayed(const Duration(seconds: 5));
