@@ -20,6 +20,7 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   void onReady() {
     super.onReady();
     appTitle = args! as String;
+    ready();
     // emit(state.copyWith(screenStatus: ScreenStatus.loading));
     //print(args as Map<String, String>);
     // await Future.delayed(const Duration(seconds: 5));

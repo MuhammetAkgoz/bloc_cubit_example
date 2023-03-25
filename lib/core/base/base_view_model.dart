@@ -45,6 +45,12 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
   /// it's not throw [Exception]
   set context(BuildContext? value) => _context = value;
 
+  /// [args] provides previous page arguments.
+  /// [args] should be casted before used it.
+  ///
+  /// ```dart
+  /// final arg = args! as String
+  /// ```
   Object? get args => ModalRoute.of(context)?.settings.arguments;
 
   void load() => emit(state.copyWith(screenStatus: ScreenStatus.loading) as T);
