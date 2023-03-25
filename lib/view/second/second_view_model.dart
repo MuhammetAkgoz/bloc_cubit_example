@@ -1,4 +1,5 @@
-import 'package:bloc_cubit_example/core/base/base_state.dart';
+import 'dart:core';
+
 import 'package:bloc_cubit_example/core/base/base_view_model.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
@@ -17,7 +18,7 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   @override
   void onReady() async {
     // emit(state.copyWith(screenStatus: ScreenStatus.loading));
-
+    //print(args as Map<String, String>);
     // await Future.delayed(const Duration(seconds: 5));
     // emit(state.copyWith(screenStatus: ScreenStatus.success));
   }

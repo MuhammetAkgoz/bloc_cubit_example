@@ -19,7 +19,7 @@ class _SecondViewState extends BaseStatefulView<SecondView, SecondViewModel> {
     print('second trigger');
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () => reader.navigate()),
-      appBar: AppBar(title: const Text('Posts')),
+      appBar: AppBar(title: Text('a'.toString())),
       body: ViewStateBuilder<SecondViewModel, SecondState>(
         onSuccess: (context, state) => Text(state.color.toString()),
       ),

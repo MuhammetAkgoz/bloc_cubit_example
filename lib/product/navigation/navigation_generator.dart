@@ -19,29 +19,28 @@ class NavigationGenerator {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Routes.first:
-        return _navigate(const FirstView());
+        return _navigate(const FirstView(), routeSettings);
       case Routes.second:
         return _navigate(
-          BlocProvider<SecondViewModel>(
-            create: (_) => SecondViewModel(),
-            child: const SecondView(),
-          ),
+          BlocProvider<SecondViewModel>(create: (_) => SecondViewModel(), child: const SecondView()),
+          routeSettings,
         );
       case Routes.third:
         return _navigate(
-          BlocProvider<ThirdViewModel>(
-            create: (_) => ThirdViewModel(),
-            child: const ThirdView(),
-          ),
-        );
+            BlocProvider<ThirdViewModel>(
+              create: (_) => ThirdViewModel(),
+              child: const ThirdView(),
+            ),
+            routeSettings);
       default:
         return undefinedRoute();
     }
   }
 
-  static MaterialPageRoute<Widget> _navigate(Widget widget) {
+  static MaterialPageRoute<Widget> _navigate(Widget widget, RouteSettings settings) {
     return MaterialPageRoute(
       builder: (context) => widget,
+      settings: settings,
     );
   }
 

@@ -24,7 +24,6 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
   /// [onReady] cannot be run inside a [StatelessWidget]
   /// that has a viewModel.
   void onReady() {
-    print("${_context?.owner}'s context is ready");
     print('${toString()}: READY');
   }
 
@@ -45,6 +44,8 @@ class BaseViewModel<T extends BaseState> extends Cubit<T> {
   /// [context] cannot be set when you called inside of a BaseStatelessView.
   /// it's not throw [Exception]
   set context(BuildContext? value) => _context = value;
+
+  Object? get args => ModalRoute.of(context)?.settings.arguments;
 
   void load() => emit(state.copyWith(screenStatus: ScreenStatus.loading) as T);
   void fail() => emit(state.copyWith(screenStatus: ScreenStatus.error) as T);
