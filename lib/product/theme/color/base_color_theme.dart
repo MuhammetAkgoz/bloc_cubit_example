@@ -3,38 +3,24 @@ import 'package:flutter/material.dart';
 
 abstract class BaseColorTheme {
   AppColors get colors;
-  Color? primaryScaffoldBackground;
-  Color? secondaryScaffoldBackground;
-  Color? primaryColor;
-  Color? textColor;
-  Color? lightTextColor;
-  Color? buttonColor;
-  Color? cardColor;
-  Color? enableBorderColor;
-  Color? dividerColor;
 
-  /// can be use for card, container etc.
-  Color? contentBorderColor;
-  Color? shadowColor;
-  Color? inputBorder;
-
-  /// common colors
-  Color? successColor;
-  Color? warningColor;
-  Color? errorColor;
-  Color? infoColor;
-
-  Color? selectedRowColor;
-  Color? disableTextColor;
-  Color? disableButtonColor;
-
-  Color? majorColor;
+  /// Base Colors
+  Color? primary;
 
   /// Appbar colors
   Color? appbarPrimary;
   Color? appbarSecondary;
-  Color? appbarTertiary;
+  Color? appbarSurface;
 
-  Brightness? brightness;
-  ColorScheme? colorScheme;
+  /// Text colors
+  Color? textColor;
+  Color? listTileTextColor;
+
+  /// Indicators Colors
+  Color? indicatorColor;
+
+  /// Sheme Colors
+  ColorScheme get scheme;
+  Color? schemePrimary;
+  Color? schemeSecondary;
 }

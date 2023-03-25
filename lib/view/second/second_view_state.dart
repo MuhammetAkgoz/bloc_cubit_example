@@ -6,7 +6,7 @@ class SecondState extends BaseState {
     required this.args,
     required this.color,
     required this.title,
-    super.screenStatus = ScreenStatus.initial,
+    super.screenStatus = ScreenStatus.loading,
   });
   final String args;
   final Color color;
@@ -15,7 +15,6 @@ class SecondState extends BaseState {
   @override
   List<Object?> get props => [...super.props, args, color, title];
 
-  @override
   SecondState copyWith({
     String? args,
     Color? color,

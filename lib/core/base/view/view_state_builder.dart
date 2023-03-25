@@ -48,7 +48,7 @@ typedef ViewStateBuilderCondition = bool Function(
 ///
 /// [T] - the type of items,
 /// [B] - the type of bloc.
-class ViewStateBuilder<T extends BaseState, B extends BlocBase<T>> extends BlocBuilder<B, T> {
+class ViewStateBuilder<B extends BlocBase<T>, T extends BaseState> extends BlocBuilder<B, T> {
   ViewStateBuilder({
     super.key,
     super.bloc,
@@ -75,7 +75,7 @@ class ViewStateBuilder<T extends BaseState, B extends BlocBase<T>> extends BlocB
             } else if (state.screenStatus == ScreenStatus.error) {
               return onError?.call(context, state) ?? const SizedBox.shrink();
             } else {
-              throw ArgumentError.value(state, 'state');
+              throw ArgumentError.value(state, state.toString());
             }
           },
         );

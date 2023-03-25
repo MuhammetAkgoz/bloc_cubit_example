@@ -16,7 +16,6 @@ class FirstState extends BaseState {
   @override
   List<Object?> get props => [...super.props, number, model, name];
 
-  @override
   FirstState copyWith({
     int? number,
     List<FirstResponseModel>? model,

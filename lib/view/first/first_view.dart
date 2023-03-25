@@ -20,7 +20,7 @@ class _FirstViewState extends BaseStatefulView<FirstView, FirstViewModel> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: () => reader.navigate()),
       appBar: AppBar(title: const Text('First Screem')),
-      body: ViewStateBuilder<FirstState, FirstViewModel>(
+      body: ViewStateBuilder<FirstViewModel, FirstState>(
         onSuccess: (context, state) => ListView.builder(
           itemCount: state.model.length,
           itemBuilder: (context, index) => ListTile(

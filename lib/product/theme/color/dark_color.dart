@@ -3,69 +3,10 @@ import 'package:bloc_cubit_example/product/theme/color/base_color_theme.dart';
 import 'package:flutter/material.dart';
 
 class DarkColor implements BaseColorTheme {
-  DarkColor() {
-    colorScheme = const ColorScheme.light().copyWith(onPrimary: colors.lima, onSurface: colors.outerSpace);
-    successColor = colors.sunGlow;
-    warningColor = colors.lima;
-    infoColor = colors.carnation;
-    errorColor = colors.azureRadiance;
-  }
-  @override
-  late final Brightness? brightness;
+  DarkColor() {}
 
   @override
-  late final ColorScheme? colorScheme;
-
-  @override
-  Color? primaryScaffoldBackground;
-
-  @override
-  Color? secondaryScaffoldBackground;
-
-  @override
-  Color? primaryColor;
-
-  @override
-  Color? textColor;
-
-  @override
-  Color? buttonColor;
-
-  @override
-  Color? inputBorder;
-
-  @override
-  Color? cardColor;
-
-  @override
-  Color? contentBorderColor;
-
-  @override
-  Color? shadowColor;
-
-  @override
-  Color? selectedRowColor;
-
-  @override
-  Color? errorColor;
-
-  @override
-  Color? infoColor;
-
-  @override
-  Color? successColor;
-
-  @override
-  Color? warningColor;
-
-  @override
-  Color? disableTextColor;
-
-  @override
-  Color? disableButtonColor;
-
-  @override
-  Color? dividerColor;
+  final AppColors colors = AppColors();
 
   @override
   Color? appbarPrimary;
@@ -74,17 +15,26 @@ class DarkColor implements BaseColorTheme {
   Color? appbarSecondary;
 
   @override
-  Color? appbarTertiary;
+  Color? appbarSurface;
 
   @override
-  Color? enableBorderColor;
+  Color? indicatorColor;
 
   @override
-  Color? lightTextColor;
+  Color? textColor;
 
   @override
-  Color? majorColor;
+  Color? listTileTextColor;
 
   @override
-  final AppColors colors = AppColors();
+  Color? primary;
+
+  @override
+  Color? schemePrimary;
+
+  @override
+  Color? schemeSecondary;
+
+  @override
+  ColorScheme get scheme => ColorScheme.dark();
 }
