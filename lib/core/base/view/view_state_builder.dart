@@ -1,6 +1,5 @@
 import 'package:bloc_cubit_example/core/base/base_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// Builder function for the the initial state.
@@ -48,20 +47,27 @@ typedef ViewStateBuilderCondition = bool Function(
 ///
 /// [T] - the type of items,
 /// [B] - the type of bloc.
-class ViewStateBuilder<B extends BlocBase<T>, T extends BaseState> extends BlocBuilder<B, T> {
+
+class ViewStateBloc extends BlocBase<BaseState> {
+  ViewStateBloc() : super(const BaseState(screenStatus: ScreenStatus.initial));
+
+  void load() => super.emit(state.copyWith(screenStatus: ScreenStatus.loading));
+  void ready() => super.emit(state.copyWith(screenStatus: ScreenStatus.success));
+}
+
+class ViewStateBuilder extends BlocBuilder<ViewStateBloc, BaseState> {
   ViewStateBuilder({
     super.key,
     super.bloc,
     InitialBuilder? onReady,
     LoadingBuilder? onLoading,
-    RefreshingBuilder<T>? onRefreshing,
-    SuccessBuilder<T>? onSuccess,
+    RefreshingBuilder<BaseState>? onRefreshing,
+    SuccessBuilder<BaseState>? onSuccess,
     EmptyBuilder? onEmpty,
     ErrorBuilder? onError,
-    ViewStateBuilderCondition? super.buildWhen,
+    super.buildWhen,
   }) : super(
-          builder: (BuildContext context, T state) {
-            print('${state.screenStatus.name} çalıştı');
+          builder: (BuildContext context, BaseState state) {
             if (state.screenStatus == ScreenStatus.initial) {
               return onReady?.call(context) ?? const SizedBox.shrink();
             } else if (state.screenStatus == ScreenStatus.loading) {

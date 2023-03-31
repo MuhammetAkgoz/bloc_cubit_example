@@ -3,9 +3,11 @@ import 'dart:io';
 
 import 'package:bloc_cubit_example/core/base/base_state.dart';
 import 'package:bloc_cubit_example/core/base/base_view_model.dart';
+import 'package:bloc_cubit_example/core/base/view/view_state_builder.dart';
 import 'package:bloc_cubit_example/product/model/first_response.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/view/first/first_view_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 class FirstViewModel extends BaseViewModel<FirstState> {
@@ -19,25 +21,27 @@ class FirstViewModel extends BaseViewModel<FirstState> {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
-    get();
+    BlocProvider.of<ViewStateBloc>(context).load();
+    await Future<void>.delayed(const Duration(seconds: 3));
+    BlocProvider.of<ViewStateBloc>(context).ready();
   }
 
   Future<void> get() async {
     emit(state.copyWith(screenStatus: ScreenStatus.loading));
-    await Future.delayed(Duration(seconds: 3));
+    await Future<void>.delayed(const Duration(seconds: 3));
     final response = await http.get(Uri.parse(baseUrl));
     if (response.statusCode == HttpStatus.ok) {
       final body = jsonDecode(response.body) as List<dynamic>;
       emit(state.copyWith(model: body.map(FirstResponseModel.fromJson).toList()));
-
       emit(state.copyWith(screenStatus: ScreenStatus.success));
-
       return;
     }
     throw Exception('fetch error');
   }
+
+  void change() => emit(state.copyWith(number: 100));
 
   void navigate() => navigator.navigateToPage(path: Routes.second, data: 'Muhammet');
 }

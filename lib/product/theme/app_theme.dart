@@ -24,7 +24,7 @@ abstract class AppThemeBuilder {
       colorScheme: theme.colorTheme.scheme,
       indicatorColor: theme.colorTheme.indicatorColor,
       listTileTheme: ListTileThemeData(textColor: theme.colorTheme.listTileTextColor),
-      textTheme: TextTheme().apply(displayColor: Colors.green),
+      textTheme: const TextTheme().apply(displayColor: Colors.green),
       appBarTheme: AppBarTheme(
         backgroundColor: theme.colorTheme.appbarPrimary,
         foregroundColor: theme.colorTheme.appbarSecondary,

@@ -1,10 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-/// Base class for states.
-///
-enum ScreenStatus { initial, loading, refreshing, empty, success, error }
+/// [ScreenStatus] holds state of ViewStateBuilder
+enum ScreenStatus {
+  initial,
+  loading,
+  refreshing,
+  empty,
+  success,
+  error,
+}
 
+/// Base class for states.
 class BaseState extends Equatable {
   const BaseState({required this.screenStatus});
 
