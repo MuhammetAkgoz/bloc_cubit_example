@@ -14,19 +14,26 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+
+  #Network
+  dio: ^5.0.2
+
   cupertino_icons: ^1.0.5
   equatable: ^2.0.5
   flutter_bloc: ^8.1.2
   http: ^0.13.5
-  very_good_analysis: ^4.0.0+1
   flutter_svg: ^2.0.4
+
+  #Firebase
+  firebase_core: ^2.8.0
+  firebase_dynamic_links: ^5.0.17
 
   flutter:
     sdk: flutter
 
 
 dev_dependencies:
-  flutter_lints: ^2.0.1
+  very_good_analysis: ^4.0.0+1
   flutter_test:
     sdk: flutter
 

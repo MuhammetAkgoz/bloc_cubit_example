@@ -1,5 +1,5 @@
 import 'package:bloc_cubit_example/core/base/base_state.dart';
-import 'package:bloc_cubit_example/product/navigation/navigation_handler.dart';
+import 'package:bloc_cubit_example/core/navigation/navigation_handler.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

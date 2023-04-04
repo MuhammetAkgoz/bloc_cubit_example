@@ -6,38 +6,46 @@ import 'package:bloc_cubit_example/view/third/third_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-@immutable
-class Routes {
-  const Routes._();
+enum MenuKey {
+  first('/'),
+  main('/main'),
+  second('/second'),
+  third('/third');
 
-  static const String first = '/';
-  static const String second = '/second';
-  static const String third = '/third';
+  const MenuKey(this.key);
+
+  final String key;
 }
 
 class NavigationGenerator {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
-    switch (routeSettings.name) {
-      case Routes.first:
-        return _navigate(const FirstView(), routeSettings);
-      case Routes.second:
-        return _navigate(
-          BlocProvider<SecondViewModel>(create: (_) => SecondViewModel(), child: const SecondView()),
-          routeSettings,
-        );
-      case Routes.third:
-        return _navigate(
-            BlocProvider<ThirdViewModel>(
-              create: (_) => ThirdViewModel(),
-              child: const ThirdView(),
-            ),
-            routeSettings);
-      default:
-        return undefinedRoute();
+    if (routeSettings.name == MenuKey.first.key) {
+      return _navigate(const FirstView(), routeSettings);
+    } else if (routeSettings.name == MenuKey.second.key) {
+      return _navigate(
+        BlocProvider<SecondViewModel>(
+          create: (_) => SecondViewModel(),
+          child: const SecondView(),
+        ),
+        routeSettings,
+      );
+    } else if (routeSettings.name == MenuKey.second.key) {
+      return _navigate(
+        BlocProvider<ThirdViewModel>(
+          create: (_) => ThirdViewModel(),
+          child: const ThirdView(),
+        ),
+        routeSettings,
+      );
+    } else {
+      return undefinedRoute();
     }
   }
 
-  static MaterialPageRoute<Widget> _navigate(Widget widget, RouteSettings settings) {
+  static MaterialPageRoute<Widget> _navigate(
+    Widget widget,
+    RouteSettings settings,
+  ) {
     return MaterialPageRoute(
       builder: (context) => widget,
       settings: settings,
@@ -45,6 +53,9 @@ class NavigationGenerator {
   }
 
   static Route<dynamic> undefinedRoute() {
-    return MaterialPageRoute(builder: (context) => const Scaffold(body: Center(child: Text('No Route Found'))));
+    return MaterialPageRoute(
+      builder: (context) =>
+          const Scaffold(body: Center(child: Text('No Route Found'))),
+    );
   }
 }

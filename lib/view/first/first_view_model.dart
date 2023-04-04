@@ -39,5 +39,5 @@ class FirstViewModel extends BaseViewModel<FirstState> {
     throw Exception('fetch error');
   }
 
-  void navigate() => navigator.navigateToPage(path: Routes.second, data: 'Muhammet');
+  void navigate() => navigator.navigateToPage(path: MenuKey.second.key, data: 'Muhammet');
 }
