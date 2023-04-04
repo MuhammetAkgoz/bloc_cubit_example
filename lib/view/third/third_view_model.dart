@@ -1,4 +1,4 @@
-import 'package:bloc_cubit_example/core/base/base_view_model.dart';
+import 'package:odin/base/base_view_model.dart';
 import 'package:bloc_cubit_example/view/third/third_view_state.dart';
 
 class ThirdViewModel extends BaseViewModel<ThirdState> {

@@ -1,7 +1,7 @@
 import 'dart:core';
 
-import 'package:bloc_cubit_example/core/base/base_view_model.dart';
-import 'package:bloc_cubit_example/core/base/view/view_state_builder.dart';
+import 'package:odin/base/base_view_model.dart';
+import 'package:odin/base/view/view_state_builder.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
 import 'package:bloc_cubit_example/view/second/second_view_state.dart';

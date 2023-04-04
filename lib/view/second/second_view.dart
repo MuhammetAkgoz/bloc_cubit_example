@@ -1,7 +1,7 @@
-import 'package:bloc_cubit_example/core/base/base_stateful_view.dart';
-import 'package:bloc_cubit_example/core/base/view/view_state_builder.dart';
 import 'package:bloc_cubit_example/view/second/second_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:odin/base/base_stateful_view.dart';
+import 'package:odin/base/view/view_state_builder.dart';
 
 class SecondView extends StatefulWidget {
   const SecondView({super.key});

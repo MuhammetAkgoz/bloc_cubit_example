@@ -1,4 +1,4 @@
-import 'package:bloc_cubit_example/core/base/base_state.dart';
+import 'package:odin/base/base_state.dart';
 
 class ThirdState extends BaseState {
   ThirdState({

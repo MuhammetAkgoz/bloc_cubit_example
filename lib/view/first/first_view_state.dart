@@ -1,5 +1,5 @@
-import 'package:bloc_cubit_example/core/base/base_state.dart';
 import 'package:bloc_cubit_example/product/model/first_response.dart';
+import 'package:odin/base/base_state.dart';
 
 class FirstState extends BaseState {
   const FirstState({

@@ -1,10 +1,10 @@
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
-import 'package:bloc_cubit_example/core/navigation/navigation_handler.dart';
 import 'package:bloc_cubit_example/product/theme/app_theme.dart';
 import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
 import 'package:bloc_cubit_example/view/first/first_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:odin/navigation/navigation_handler.dart';
 
 void main() {
   runApp(

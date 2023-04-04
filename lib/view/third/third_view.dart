@@ -1,4 +1,4 @@
-import 'package:bloc_cubit_example/core/base/base_stateful_view.dart';
+import 'package:odin/base/base_stateful_view.dart';
 import 'package:bloc_cubit_example/view/third/third_view_model.dart';
 import 'package:flutter/material.dart';
 
