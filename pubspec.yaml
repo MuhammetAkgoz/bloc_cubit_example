@@ -29,6 +29,16 @@ dependencies:
   otp_autofill: ^2.1.0
   keyboard_actions: ^4.2.0
   permission_handler: ^10.2.0
+  google_api_availability: ^5.0.0
+  device_info_plus: ^8.1.0
+  package_info_plus: ^3.0.3
+  huawei_hmsavailability: ^6.6.0+300
+  uuid: ^3.0.7
+  shared_preferences: ^2.1.0
+
+  safe_device:
+    git:
+      url: https://github.com/neohubtech/safe_device.git
 
   #Firebase
   firebase_core: ^2.8.0
