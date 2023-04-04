@@ -1,3 +1,4 @@
+import 'package:bloc_cubit_example/core/base/view/view_state_builder.dart';
 import 'package:bloc_cubit_example/view/first/first_view.dart';
 import 'package:bloc_cubit_example/view/second/second_view.dart';
 import 'package:bloc_cubit_example/view/second/second_view_model.dart';
@@ -47,15 +48,20 @@ class NavigationGenerator {
     RouteSettings settings,
   ) {
     return MaterialPageRoute(
-      builder: (context) => widget,
+      builder: (context) => BlocProvider<ViewStateBloc>(
+        create: (_) => ViewStateBloc(),
+        child: widget,
+      ),
       settings: settings,
     );
   }
 
-  static Route<dynamic> undefinedRoute() {
+  static Route<dynamic> _undefinedRoute() {
     return MaterialPageRoute(
-      builder: (context) =>
-          const Scaffold(body: Center(child: Text('No Route Found'))),
+      builder: (context) => const Scaffold(
+          body: Center(
+        child: Text('No Route Found'),
+      )),
     );
   }
 }

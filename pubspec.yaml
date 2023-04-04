@@ -23,6 +23,8 @@ dependencies:
   flutter_bloc: ^8.1.2
   http: ^0.13.5
   flutter_svg: ^2.0.4
+  mobx: ^2.1.4
+  flutter_mobx: ^2.0.6+5
 
   #Firebase
   firebase_core: ^2.8.0

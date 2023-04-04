@@ -11,6 +11,7 @@ class ThirdState extends BaseState {
   @override
   List<Object?> get props => [number];
 
+  @override
   ThirdState copyWith({
     int? number,
     ScreenStatus? screenStatus,

@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:bloc_cubit_example/core/base/base_view_model.dart';
+import 'package:bloc_cubit_example/core/base/view/view_state_builder.dart';
 import 'package:bloc_cubit_example/product/navigation/navigation_generator.dart';
 import 'package:bloc_cubit_example/product/theme/theme_provider.dart';
 import 'package:bloc_cubit_example/view/second/second_view_state.dart';
@@ -17,14 +18,11 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   }
 
   @override
-  void onReady() {
+  void onReady() async {
     super.onReady();
-    appTitle = args! as String;
-    ready();
-    // emit(state.copyWith(screenStatus: ScreenStatus.loading));
-    //print(args as Map<String, String>);
-    // await Future.delayed(const Duration(seconds: 5));
-    // emit(state.copyWith(screenStatus: ScreenStatus.success));
+    BlocProvider.of<ViewStateBloc>(context).load();
+    await Future<void>.delayed(const Duration(seconds: 3));
+    BlocProvider.of<ViewStateBloc>(context).ready();
   }
 
   void changeTheme() => BlocProvider.of<ThemeProvider>(context).change();
