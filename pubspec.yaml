@@ -28,6 +28,7 @@ dependencies:
   crypto: ^3.0.2
   otp_autofill: ^2.1.0
   keyboard_actions: ^4.2.0
+  permission_handler: ^10.2.0
 
   #Firebase
   firebase_core: ^2.8.0

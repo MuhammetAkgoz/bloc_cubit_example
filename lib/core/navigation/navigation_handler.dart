@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class INavigationService {
   Future<void> pushNamed({String? path, Object? data});
   Future<void> pushNamedAndRemoveUntil({String? path, Object? data});
-  void pop();
+  void pop({Object? data});
 }
 
 class NavigationHandler implements INavigationService {
@@ -29,5 +29,5 @@ class NavigationHandler implements INavigationService {
   }
 
   @override
-  void pop() => navigatorKey.currentState!.pop();
+  void pop({Object? data}) => navigatorKey.currentState!.pop(data);
 }
