@@ -1,10 +1,10 @@
+import 'package:bloc_cubit_example/core/constants/currency.dart';
 import 'package:intl/intl.dart';
-import 'package:neo_flutter_base/core/constants/currency.dart';
 
 abstract class CurrencyAmountUtil {
   static final _trNumberFormat = NumberFormat.currency(locale: 'eu', symbol: CurrencyConstant.TL_CURRENCY);
   static final _trNumberFormatWithoutIcon = NumberFormat.currency(locale: 'eu', symbol: 'TL');
-  static final currencyFormatter = NumberFormat("#,###,###.00", "en_US");
+  static final currencyFormatter = NumberFormat('#,###,###.00', 'en_US');
 
   /// get num value parameter and convert into turkish type amount format
   static String addTLSymbol(num? amount) {

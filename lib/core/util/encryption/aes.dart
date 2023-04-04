@@ -1,8 +1,11 @@
+import 'package:bloc_cubit_example/core/util/logger.dart';
 import 'package:encrypt/encrypt.dart';
-import 'package:neo_flutter_base/core/util/neo_logger.dart';
+import 'package:flutter/material.dart' as material;
 
-class NeoAes {
-  static String PADDING = "PKCS7";
+@material.immutable
+class NeoAES {
+  const NeoAES._();
+  static const String PADDING = 'PKCS7';
 
   static AES getAesKey(String key) {
     final aesKey = Key.fromUtf8(key);
@@ -15,21 +18,19 @@ class NeoAes {
       final encryptor = Encrypter(getAesKey(decryptKey));
       return encryptor.decrypt64(decryptText, iv: IV.fromUtf8(decryptKey));
     } catch (e) {
-      NeoLogger.instance.e(e.toString());
+      NeoLogger.e(e.toString());
     }
-    return "";
+    return '';
   }
 
   static String encrypt(String encryptText, String encryptKey) {
     try {
-      final encryptor = Encrypter(
-        getAesKey(encryptKey),
-      );
+      final encryptor = Encrypter(getAesKey(encryptKey));
 
       return encryptor.encrypt(encryptText, iv: IV.fromUtf8(encryptKey)).base64;
     } catch (e) {
-      NeoLogger.instance.e(e.toString());
+      NeoLogger.e(e.toString());
     }
-    return "";
+    return '';
   }
 }

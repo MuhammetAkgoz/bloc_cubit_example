@@ -11,35 +11,42 @@ enum MenuKey {
   first('/'),
   main('/main'),
   second('/second'),
-  third('/third');
+  third('/third'),
+  none('');
 
   const MenuKey(this.key);
-
   final String key;
+
+  static MenuKey getType(String? key) {
+    try {
+      return MenuKey.values.firstWhere((element) => element.key == key);
+    } catch (e) {
+      return none;
+    }
+  }
 }
 
 class NavigationGenerator {
   static Route<dynamic>? onGenerateRoute(RouteSettings routeSettings) {
-    if (routeSettings.name == MenuKey.first.key) {
-      return _navigate(const FirstView(), routeSettings);
-    } else if (routeSettings.name == MenuKey.second.key) {
-      return _navigate(
-        BlocProvider<SecondViewModel>(
-          create: (_) => SecondViewModel(),
-          child: const SecondView(),
-        ),
-        routeSettings,
-      );
-    } else if (routeSettings.name == MenuKey.second.key) {
-      return _navigate(
-        BlocProvider<ThirdViewModel>(
-          create: (_) => ThirdViewModel(),
-          child: const ThirdView(),
-        ),
-        routeSettings,
-      );
-    } else {
-      return undefinedRoute();
+    final key = MenuKey.getType(routeSettings.name);
+
+    switch (key) {
+      case MenuKey.first:
+        return _navigate(const FirstView(), routeSettings);
+      case MenuKey.second:
+        return _navigate(
+          BlocProvider<SecondViewModel>(create: (_) => SecondViewModel(), child: const SecondView()),
+          routeSettings,
+        );
+      case MenuKey.third:
+        return _navigate(
+          BlocProvider<ThirdViewModel>(create: (_) => ThirdViewModel(), child: const ThirdView()),
+          routeSettings,
+        );
+      case MenuKey.main:
+        return _navigate(const FirstView(), routeSettings);
+      case MenuKey.none:
+        return _undefinedRoute();
     }
   }
 

@@ -43,5 +43,5 @@ class FirstViewModel extends BaseViewModel<FirstState> {
 
   void change() => emit(state.copyWith(number: 100));
 
-  void navigate() => navigator.navigateToPage(path: Routes.second, data: 'Muhammet');
+  void navigate() => navigator.pushNamed(path: MenuKey.second.key, data: 'Muhammet');
 }

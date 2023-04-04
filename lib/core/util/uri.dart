@@ -1,4 +1,4 @@
-import 'package:bloc_cubit_example/core/util/neo_logger.dart';
+import 'package:bloc_cubit_example/core/util/logger.dart';
 
 class UriUtil {
   /// returns menuKey value if there is an exist query param from given [uriString]
@@ -30,5 +30,14 @@ class UriUtil {
     final uri = Uri.dataFromString(uriString);
     final queryParam = uri.queryParameters[key];
     return queryParam ?? '';
+  }
+
+  /// Convert map parameter to query
+  static String _mapToQueryString(Map<String, String> queryParameters, {required String deeplinkSuffix}) {
+    final buffer = StringBuffer(deeplinkSuffix);
+    for (final mapEntry in queryParameters.entries) {
+      buffer.write('${mapEntry.key}=${mapEntry.value}&');
+    }
+    return buffer.toString();
   }
 }

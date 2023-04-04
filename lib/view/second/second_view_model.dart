@@ -26,5 +26,5 @@ class SecondViewModel extends BaseViewModel<SecondState> {
   }
 
   void changeTheme() => BlocProvider.of<ThemeProvider>(context).change();
-  void navigate() => navigator.navigateToPage(path: MenuKey.third.key);
+  void navigate() => navigator.pushNamed(path: MenuKey.third.key);
 }
